@@ -1,4 +1,6 @@
-local M = {}
+local M = {
+	host = "127.0.0.1",
+}
 local uv = vim.loop
 local js_session = require("dap-vscode-js.session")
 local utils = require("dap-vscode-js.utils")
@@ -9,7 +11,7 @@ local dap = require("dap")
 local function adapter_config(port, mode, proc, start_child)
 	return {
 		type = "server",
-		host = "127.0.0.1",
+		host = M.host,
 		port = port,
 		id = mode,
 		reverse_request_handlers = {
@@ -59,9 +61,9 @@ function M.generate_adapter(mode, config)
 	return function(callback)
 		local proc
 
-		proc = utils.start_debugger(config, function(port, proc)
-			logger.debug("Debugger process started on port " .. port)
-			
+		proc = utils.start_debugger(config, function(port, host, proc)
+			logger.debug("Debugger process started on " .. host .. ":" .. port)
+			M.host = host
 			js_session.register_port(port)
 			callback(adapter_config(port, mode, proc, start_child_session))
 		end, function(code, signal)
