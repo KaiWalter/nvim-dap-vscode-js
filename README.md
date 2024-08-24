@@ -165,3 +165,13 @@ attachedChildSession = <function 1>
 },
 type = "server"
 }
+
+[ DEBUG ] 2024-08-24T17:25:10Z+0200 ] .../kai/.local/share/nvim/lazy/nvim-dap/lua/dap/session.lua:1337 ] "Connecting to debug adapter" {
+host = "127.0.0.1",
+id = "node-terminal",
+port = "{ seq: 6, type: 'response', request_seq: 3, command: 'setBreakpoints', success: true, body: { breakpoints: [ [Object] ] }}",
+reverse_request_handlers = {
+attachedChildSession = <function 1>
+},
+type = "server"
+}
