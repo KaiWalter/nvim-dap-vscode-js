@@ -1,13 +1,13 @@
 # nvim-dap-vscode-js
 
-[nvim-dap](https://github.com/mfussenegger/nvim-dap) adapter for [vscode-js-debug](https://github.com/microsoft/vscode-js-debug). 
+[nvim-dap](https://github.com/mfussenegger/nvim-dap) adapter for [vscode-js-debug](https://github.com/microsoft/vscode-js-debug).
 
 ## Adapters
 
 Every platform supported by vscode is provided. This includes:
 
 | Adapter             | Platform          | Support     |
-|---------------------|-------------------|-------------|
+| ------------------- | ----------------- | ----------- |
 | `pwa-node`          | Node.js           | Full        |
 | `pwa-chrome`        | Chrome            | Partial[^1] |
 | `pwa-msedge`        | Edge              | Untested    |
@@ -26,7 +26,7 @@ use { "mxsdev/nvim-dap-vscode-js", requires = {"mfussenegger/nvim-dap"} }
 
 ### Debugger
 
-You must download and build a copy of [vscode-js-debug](https://github.com/microsoft/vscode-js-debug) in order to use this plugin. 
+You must download and build a copy of [vscode-js-debug](https://github.com/microsoft/vscode-js-debug) in order to use this plugin.
 
 #### With Packer
 
@@ -34,7 +34,7 @@ You must download and build a copy of [vscode-js-debug](https://github.com/micro
 use {
   "microsoft/vscode-js-debug",
   opt = true,
-  run = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out" 
+  run = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out"
 }
 ```
 
@@ -144,12 +144,24 @@ You may also want to check out [neotest-jest](https://github.com/haydenmeade/neo
 
 ## Planned Features
 
- - [ ] Integration with [neotest-jest](https://github.com/haydenmeade/neotest-jest)
- - [ ] Support for switching between child sessions
+- [ ] Integration with [neotest-jest](https://github.com/haydenmeade/neotest-jest)
+- [ ] Support for switching between child sessions
 
 ## Credits
 
 I would like to say a huge thank you to [Jens Claes](https://github.com/entropitor), whose dotfiles this plugin is based off of, and to all members who contributed to [this issue](https://github.com/microsoft/vscode-js-debug/issues/902) - the insight gained from this was paramount to the success of this project.
 
 [^1]: The debugger runs and attaches, however breakpoints may be rejected.
+
 [^2]: See [here](https://github.com/microsoft/vscode-js-debug/issues/214#issuecomment-572686921) for more details on running jest
+
+issue:
+[ DEBUG ] 2024-08-24T09:05:34Z+0200 ] .../kai/.local/share/nvim/lazy/nvim-dap/lua/dap/session.lua:1337 ] "Connecting to debug adapter" {
+host = "127.0.0.1",
+id = "node-terminal",
+port = "Debug server listening at ::1:8123",
+reverse_request_handlers = {
+attachedChildSession = <function 1>
+},
+type = "server"
+}
